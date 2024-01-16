@@ -1,6 +1,9 @@
 package org.example;
 
 import org.example.design.adapter.*;
+import org.example.design.proxy.Browser;
+import org.example.design.proxy.BrowserProxy;
+import org.example.design.proxy.IBrowser;
 import org.example.design.singleton.AClazz;
 import org.example.design.singleton.BClazz;
 import org.example.design.singleton.SocketClient;
@@ -17,17 +20,26 @@ public class Main {
 //        System.out.println("두 개의 객체가 동일한가?");
 //        System.out.println(aClient.equals(bClient));
 
-        HairDryer hairDryer = new HairDryer();
-        connect(hairDryer);
+//        HairDryer hairDryer = new HairDryer();
+//        connect(hairDryer);
+//
+//        Cleaner cleaner = new Cleaner();
+//        Electronic110V adapter = new SocketAdapter(cleaner);
+//        connect(adapter);
+//
+//        AirConditioner airConditioner = new AirConditioner();
+//        Electronic110V airAdapter = new SocketAdapter(airConditioner);
+//        connect(airAdapter);
 
-        Cleaner cleaner = new Cleaner();
-        Electronic110V adapter = new SocketAdapter(cleaner);
-        connect(adapter);
+//        Browser browser = new Browser("www.naver.com");
+//        browser.show();
 
-        AirConditioner airConditioner = new AirConditioner();
-        Electronic110V airAdapter = new SocketAdapter(airConditioner);
-        connect(airAdapter);
-
+        IBrowser browser = new BrowserProxy("www.naver.com");
+        browser.show();
+        browser.show();
+        browser.show();
+        browser.show();
+        browser.show();
     }
 
     // 콘센트
