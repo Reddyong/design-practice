@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.design.adapter.*;
 import org.example.design.aop.AopBrowser;
+import org.example.design.decorator.*;
 import org.example.design.proxy.Browser;
 import org.example.design.proxy.BrowserProxy;
 import org.example.design.proxy.IBrowser;
@@ -44,24 +45,40 @@ public class Main {
 //        browser.show();
 //        browser.show();
 
-        AtomicLong start = new AtomicLong();
-        AtomicLong end = new AtomicLong();
+//        AtomicLong start = new AtomicLong();
+//        AtomicLong end = new AtomicLong();
+//
+//        IBrowser aop = new AopBrowser("www.naver.com",
+//                () -> {
+//                    System.out.println("before");
+//                    start.set(System.currentTimeMillis());
+//                },
+//                () -> {
+//                    long now = System.currentTimeMillis();
+//                    end.set(now - start.get());
+//                });
+//
+//        aop.show();
+//        System.out.println("loading time : " + end.get());
+//
+//        aop.show();
+//        System.out.println("loading time : " + end.get());
 
-        IBrowser aop = new AopBrowser("www.naver.com",
-                () -> {
-                    System.out.println("before");
-                    start.set(System.currentTimeMillis());
-                },
-                () -> {
-                    long now = System.currentTimeMillis();
-                    end.set(now - start.get());
-                });
+        ICar audi = new Audi(1000);
+        audi.showPrice();
 
-        aop.show();
-        System.out.println("loading time : " + end.get());
+        // a3
+        ICar audi3 = new A3(audi, "A3");
+        audi3.showPrice();
 
-        aop.show();
-        System.out.println("loading time : " + end.get());
+        // a4
+        ICar audi4 = new A4(audi, "A4");
+        audi4.showPrice();
+
+        // a5
+        ICar audi5 = new A5(audi, "A5");
+        audi5.showPrice();
+
     }
 
     // 콘센트
