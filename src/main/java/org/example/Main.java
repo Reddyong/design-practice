@@ -3,6 +3,8 @@ package org.example;
 import org.example.design.adapter.*;
 import org.example.design.aop.AopBrowser;
 import org.example.design.decorator.*;
+import org.example.design.observer.Button;
+import org.example.design.observer.IButtonListener;
 import org.example.design.proxy.Browser;
 import org.example.design.proxy.BrowserProxy;
 import org.example.design.proxy.IBrowser;
@@ -64,20 +66,33 @@ public class Main {
 //        aop.show();
 //        System.out.println("loading time : " + end.get());
 
-        ICar audi = new Audi(1000);
-        audi.showPrice();
+//        ICar audi = new Audi(1000);
+//        audi.showPrice();
+//
+//        // a3
+//        ICar audi3 = new A3(audi, "A3");
+//        audi3.showPrice();
+//
+//        // a4
+//        ICar audi4 = new A4(audi, "A4");
+//        audi4.showPrice();
+//
+//        // a5
+//        ICar audi5 = new A5(audi, "A5");
+//        audi5.showPrice();
 
-        // a3
-        ICar audi3 = new A3(audi, "A3");
-        audi3.showPrice();
+        Button button = new Button("버튼");
 
-        // a4
-        ICar audi4 = new A4(audi, "A4");
-        audi4.showPrice();
-
-        // a5
-        ICar audi5 = new A5(audi, "A5");
-        audi5.showPrice();
+        button.addListener(new IButtonListener() {
+            @Override
+            public void clickEvent(String event) {
+                System.out.println(event);
+            }
+        });
+        button.click("메시지 전달 : click1");
+        button.click("메시지 전달 : click2");
+        button.click("메시지 전달 : click3");
+        button.click("메시지 전달 : click4");
 
     }
 
